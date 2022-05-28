@@ -6,25 +6,25 @@
   <meta charset="utf-8">
 
   {% if title %}
-  <title>Moringa Tribune - {{title}}</title>
+  <title>Mirikau Foods - {{title}}</title>
   {% else %}
-    <title> Moringa Tribune </title>
+    <title> Mirikau Foods </title>
   {% endif %}
 
-  <!-- {% block styles %}
+  {% block styles %}
     {% bootstrap_css %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-  {% endblock %} -->
+  {% endblock %}
 
 </head>
 <body>
-    <!-- {% include "news/navbar.html" %} -->
+    {% include "gallery/navbar.html" %}
 
     {% block content %} <h1 class='text-center'>Photographs from Mirikau Foods<h1> {%endblock%}
 
-    <!-- {% block scripts %}
+    {% block scripts %}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-     {% bootstrap_javascript %} -->
+     {% bootstrap_javascript %}
     {% endblock %}
 </body>
 </html>
