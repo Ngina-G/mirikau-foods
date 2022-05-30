@@ -46,3 +46,6 @@ class Image(models.Model):
 
     def delete_image(self):
         Image.objects.filter(pk=self.pk).delete()
+
+    def get_image_by_id(self):
+        Image.objects.get(id=self.id)

@@ -89,13 +89,23 @@ class ImageTestClass(TestCase):
         self.new_image.save_image()
 
     def test_update_method(self):
-        self.new_image.update_image(image_name='Berlin')
-        self.assertTrue(self.new_image.image_name, 'Berlin')
+        self.new_image.update_image(image_name='Hawaian')
+        self.new_image.refresh_from_db()
+        self.new_image.save_image()
+        self.assertEqual(self.new_image.image_name, 'Hawaian')
+
+    def test_get_image_by_id(self):
+        self.image= Image(image_name='Veggie Pizza', image_description='Pizzas are yummy', image_location=self.london, image_category=self.food)
+        self.image.save_image()
+        self.image.get_image_by_id()
+        self.assertEqual(self.image.id, 4)
 
     def test_delete_method(self):
         self.new_image.delete_image()
         images = Image.objects.all()
         self.assertTrue(len(images)==0)
 
-    # def test_get_image_by_id(self):
-    #     new
+    def test_filter_by_location(self):
+        self.new_image.filter_by_location(self.london)
+        self.assertEqual(self.new_image.image_name, 'Hawaian')
+
