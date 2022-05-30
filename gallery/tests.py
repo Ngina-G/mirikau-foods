@@ -88,5 +88,14 @@ class ImageTestClass(TestCase):
         self.new_image= Image(image_name='Bay pizza', image_description='Tasty pizzas are the best', image_location=self.london, image_category=self.food)
         self.new_image.save_image()
 
+    def test_update_method(self):
+        self.new_image.update_image(image_name='Berlin')
+        self.assertTrue(self.new_image.image_name, 'Berlin')
+
+    def test_delete_method(self):
+        self.new_image.delete_image()
+        images = Image.objects.all()
+        self.assertTrue(len(images)==0)
+
     # def test_get_image_by_id(self):
     #     new

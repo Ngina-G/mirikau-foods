@@ -40,3 +40,9 @@ class Image(models.Model):
 
     def save_image(self):
         self.save()
+
+    def update_image(self,image_name):
+        Image.objects.filter(pk=self.pk).update(image_name=image_name)
+
+    def delete_image(self):
+        Image.objects.filter(pk=self.pk).delete()
