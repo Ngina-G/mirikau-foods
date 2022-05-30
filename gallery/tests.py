@@ -19,6 +19,9 @@ class LocationTestClass(TestCase):
         locations = Location.objects.all()
         self.assertTrue(len(locations)> 0)
 
+    def tearDown(self):
+        Location.objects.all().delete()
+
     # def test_delete_method(self):
     #     self.london.delete_location(id)
     #     locations = Location.objects.all()
@@ -40,4 +43,16 @@ class CategoryTestClass(TestCase):
         self.food.save_category()
         categories = Category.objects.all()
         self.assertTrue(len(categories)> 0)
+
+    def tearDown(self):
+        Category.objects.all().delete()
+
+class ImageTestClass(TestCase):
+    '''
+        Set up
+    '''
+
+    def setUp(self):
+        self.new_image= Image()
+
 

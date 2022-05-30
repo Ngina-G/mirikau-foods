@@ -20,7 +20,7 @@ class Category(models.Model):
         self.save()
 
 class Image(models.Model):
-    image = models.ImageField(upload_to = 'gallery/')
+    image = models.ImageField(upload_to = 'gallery/', null=True)
     image_name = models.CharField(max_length=50)
     image_description = models.CharField(max_length=255)
     image_location = models.ForeignKey(Location, on_delete=models.CASCADE)
