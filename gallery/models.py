@@ -7,11 +7,17 @@ class Location(models.Model):
     def __str__(self):
         return self.name
 
+    def save_location(self):
+        self.save()
+
 class Category(models.Model):
     name = models.CharField(max_length=35)
 
     def __str__(self):
         return self.name
+
+    def save_category(self):
+        self.save()
 
 class Image(models.Model):
     image = models.ImageField(upload_to = 'gallery/')
