@@ -10,6 +10,12 @@ class Location(models.Model):
     def save_location(self):
         self.save()
 
+    def update_location(self,name):
+        Location.objects.filter(pk=self.pk).update(name=name)
+
+    def delete_location(self):
+        Location.objects.filter(pk=self.pk).delete()
+
 class Category(models.Model):
     name = models.CharField(max_length=35)
 
@@ -21,7 +27,6 @@ class Category(models.Model):
 
     def update_category(self,name):
         Category.objects.filter(pk=self.pk).update(name=name)
-        # self.refresh_from_db()
 
     def delete_category(self):
         Category.objects.filter(pk=self.pk).delete()
