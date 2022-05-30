@@ -106,6 +106,6 @@ class ImageTestClass(TestCase):
         self.assertTrue(len(images)==0)
 
     def test_filter_by_location(self):
-        self.new_image.filter_by_location(self.london)
-        self.assertEqual(self.new_image.image_name, 'Hawaian')
+        self.new_image.filter_by_location(image_location=self.london)
+        self.assertEqual(self.new_image.image_name, 'Bay pizza')
 
