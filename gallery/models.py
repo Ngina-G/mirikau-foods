@@ -42,13 +42,20 @@ class Image(models.Model):
         self.save()
 
     def update_image(self,image_name):
-        Image.objects.filter(pk=self.pk).update(image_name=image_name)
+        Image.objects.filter(pk=self.pk).update(image_name__image_name=image_name)
 
     def delete_image(self):
         Image.objects.filter(pk=self.pk).delete()
 
+    @classmethod
     def get_image_by_id(self):
         Image.objects.get(id=self.id)
 
+    @classmethod
     def filter_by_location(self,image_location):
-        Image.objects.all().filter(image_location=image_location)
+        Image.objects. filter(image_location__name=image_location)
+
+    @classmethod
+    def search_images_by_category(cls,images_category):
+        images = cls.objects.filter(image_category__name = images_category)
+        return images
