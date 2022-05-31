@@ -5,7 +5,8 @@ from . import views
 
 urlpatterns=[
     re_path('^$',views.home,name = 'home'),
-    re_path('^search/', views.search_results, name='search_results')
+    re_path('^search/', views.search_results, name='search_results'),
+    re_path('^locations/', views.navbar, name='navbar')
 ]
 
 if settings.DEBUG:
