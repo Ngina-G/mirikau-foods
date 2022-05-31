@@ -4,9 +4,14 @@ from .models import Category,Location,Image
 
 # Create your views here.
 def home(request):
+    category =request.GET.get('category')
     try:
-        # Converts data from the string Url
-        images = Image.objects.all()
+        category =request.GET.get('category')
+        if category == None:
+            images = Image.objects.all()
+        else:
+            images = Image.objects.filter(image_category__name=category)
+
 
     except ValueError:
         # Raise 404 error when ValueError is thrown
@@ -16,7 +21,29 @@ def home(request):
     locations = Location.objects.all()
     categories = Category.objects.all()
 
-    return render(request, 'gallery/index.html', {"images":images, "locations":locations, "categories":categories})
+    return render(request, 'index.html', {"images":images, "locations":locations, "categories":categories})
+
+def navbar(request):
+    location = request.GET.get('location')
+    try:
+        # category =request.GET.get('category')
+        # location = request.GET.get('location'
+        if location == None:
+            images = Image.objects.all()
+        else:
+            images = Image.objects.filter(image_location__name=location)
+
+
+    except ValueError:
+        # Raise 404 error when ValueError is thrown
+        raise Http404()
+        assert False
+
+    locations = Location.objects.all()
+    categories = Category.objects.all()
+
+    return render(request, 'locations.html', {"images":images, "locations":locations, "categories":categories})
+
 
 def search_results(request):
     if 'category' in request.GET and request.GET["category"]:

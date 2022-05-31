@@ -15,8 +15,19 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
             </div>
+            <div class="dropdown">
+                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                  Filter by location
+                </a>
+              
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    {% for location in locations%}
+                  <li><a class="dropdown-item" href="{% url 'navbar' %}?location={{location.name}}">{{location.name}}</a></li>
+                    {%endfor%}
+                </ul>
+              </div>
         </div>
         <form class="d-flex" role="search" action="{% url 'search_results' %}">
             <input class="form-control me-2" type="search" placeholder="Search a category" aria-label="Search" name="category">
