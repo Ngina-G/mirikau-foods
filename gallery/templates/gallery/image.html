@@ -1,0 +1,25 @@
+{%extends 'gallery/base.html'%}
+
+ {% block content %}
+
+ <div class="container">
+
+   <div class="row">
+    <img src="{{image.image.url}}" class="img-fluid" alt="Image">
+   </div>
+
+   <div class="row">
+    <h4 class="text-center">{{image.image_name}}</h4>
+   </div>
+
+   <div class="row">
+     <p>{{image.image_description}}</p>
+   </div>
+
+   <div class="row">
+     <p>Shot at {{image.image_location}}</p>
+   </div>
+
+ </div>
+
+ {% endblock %}
