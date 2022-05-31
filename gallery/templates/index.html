@@ -3,24 +3,28 @@
 {% block content %}
 {{block.super}}
 
-    <div class="container">
-
-        <ul class="list-group list-group-flush">
-
-            {% for category in categories %}
-            <li class=" list-group-item">
-                <a href="{% url 'home' %}?category={{category.name}}">
-                    {{category.name}}
-                </a>
-            </li>
-            {% endfor %}
-        </ul>
-
-        {% for image in images %}
-            <div class="col-sm-6 col-md-3">
-                <img src="{{image.image.url}}" class="img-fluid" alt="Image">
-                <h4 class="text-center">{{image.image_name}}</h4>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-2">
+                <div class="list-group list-group-vertical-sm">
+                    <h4>Categories</h4>
+                    {% for category in categories %}
+                        <a class="list-group-item list-group-item-action" href="{% url 'home' %}?category={{category.name}}">
+                            <h6>{{category.name}}</h6>
+                        </a>
+                    {% endfor %}
+                    </div>
             </div>
-      {% endfor %}
+            <div class="col-10">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+                {% for image in images %}
+                <div class="col col-sm-6 col-md-3">
+                    <a href="{% url 'image' %}?id={{image.id}}"><img src="{{image.image.url}}" class="img-fluid" alt="Image" style="width: 200px; height:300px;"></a>
+                    <h4 class="text-center">{{image.image_name}}</h4>
+                </div>
+                {% endfor %}
+            </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
