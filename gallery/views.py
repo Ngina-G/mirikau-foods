@@ -42,7 +42,7 @@ def navbar(request):
     locations = Location.objects.all()
     categories = Category.objects.all()
 
-    return render(request, 'locations.html', {"images":images, "locations":locations, "categories":categories})
+    return render(request, 'gallery/locations.html', {"images":images, "locations":locations, "categories":categories})
 
 
 def search_results(request):
@@ -56,3 +56,12 @@ def search_results(request):
     else: 
         message = "You haven't searched for any term"
         return render(request, 'gallery/search.html', {"message":message})
+
+def image(request):
+    # try:
+    id = request.GET.get('id')
+    image = Image.objects.get(id=id)
+    # except DoesNotExist:
+    #     raise Http404()
+    return render(request, 'gallery/image.html', {"image":image})
+
